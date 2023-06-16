@@ -36,7 +36,6 @@ export default function CounterPage({ params: { slug } }: CounterPageParams) {
         "postgres_changes",
         { event: "UPDATE", schema: "public", table: "COUNTER" },
         (payload) => {
-          if (counter && payload.new.count < counter.count) return
           setCounter(payload.new as Counter)
         }
       )
@@ -45,7 +44,7 @@ export default function CounterPage({ params: { slug } }: CounterPageParams) {
     return () => {
       void supabase.removeChannel(channel)
     }
-  }, [supabase, counter])
+  }, [supabase])
 
   const increment = async () => {
     if (inactive) return

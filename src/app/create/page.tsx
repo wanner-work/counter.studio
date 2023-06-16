@@ -1,13 +1,19 @@
+'use client'
+
 import Container from "@/components/layout/Container";
 import { PlusIcon } from "@heroicons/react/20/solid";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { useForm } from "react-hook-form";
+import { CreateCounterForm } from "@/types/Counter.types";
 
 export default function Create() {
   const supabase = createClientComponentClient()
 
-  const handleSubmit = async (data) => {
-    const { data, error } = await supabase.from('counters').insert([
-      { title: 'testing', description: 'testing' },
+  const { handleSubmit, register } = useForm<CreateCounterForm>()
+
+  const onSubmit = async ({ title, description }: CreateCounterForm) => {
+    const { data, error } = await supabase.from('COUNTER').insert([
+      { title, description },
     ])
   }
 
@@ -22,14 +28,14 @@ export default function Create() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-5">
+      <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-5">
         <label className="col-span-2 flex flex-col gap-3">
           <span className="font-bold text-white">Title</span>
-          <input className="px-4 py-3 bg-white text-black" type="text" placeholder="Christopf Kakk Counter"/>
+          <input {...register("title", { required: true })} className="px-4 py-3 bg-white text-black" type="text" placeholder="Christopf Kakk Counter"/>
         </label>
         <label className="col-span-2 flex flex-col gap-3">
           <span className="font-bold text-white">Description</span>
-          <textarea className="px-4 py-3 bg-white text-black "
+          <textarea {...register("description", { required: true })} className="px-4 py-3 bg-white text-black "
                     placeholder="The counter of how many times christopf is going kakken"/>
         </label>
 

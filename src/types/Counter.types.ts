@@ -7,3 +7,12 @@ export interface Counter {
   description: string
   modified: Dayjs
 }
+
+export interface CreateCounterForm {
+  title: string
+  description: string
+}
+
+export interface IncrementCounterForm {
+  id: string
+}

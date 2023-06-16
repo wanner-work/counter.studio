@@ -4,17 +4,22 @@ import Container from "@/components/layout/Container";
 import { PlusIcon } from "@heroicons/react/20/solid";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useForm } from "react-hook-form";
-import { CreateCounterForm } from "@/types/Counter.types";
+import { Counter, CreateCounterForm } from "@/types/Counter.types";
+import { useRouter } from "next/navigation";
 
 export default function Create() {
-  const supabase = createClientComponentClient()
+  const router = useRouter()
 
+  const supabase = createClientComponentClient()
   const { handleSubmit, register } = useForm<CreateCounterForm>()
 
   const onSubmit = async ({ title, description }: CreateCounterForm) => {
     const { data, error } = await supabase.from('COUNTER').insert([
       { title, description },
-    ])
+    ]).select().single()
+
+    void navigator.clipboard.writeText(`${window.location.origin}/counter/${data.id}`)
+    router.push(`/counter/${data.id}`)
   }
 
   return <Container>
@@ -39,7 +44,7 @@ export default function Create() {
                     placeholder="The counter of how many times christopf is going kakken"/>
         </label>
 
-        <div className="col-span-2 flex flex-col gap-3">
+        <div className="col-span-2 flex flex-col gap-3 mt-6">
           <span className="font-bold text-white">Ready?</span>
           <button type="submit" className="px-4 py-3 bg-white text-black font-bold flex justify-between items-center gap-2 w-full">
             <span>

@@ -7,6 +7,7 @@ import SavedCounter from "@/components/saved/SavedCounter";
 import { PlusIcon } from "@heroicons/react/20/solid";
 import Container from "@/components/layout/Container";
 import Link from "next/link";
+import { loadAll } from "@/methods/localstorage";
 
 const sortCounters = (a: Counter, b: Counter) => {
   if (a.modified > b.modified) {
@@ -19,7 +20,7 @@ const sortCounters = (a: Counter, b: Counter) => {
 }
 
 export default function Home() {
-  const [counters, setCounters] = useState<Counter[]>(TestCounters)
+  const [counters, setCounters] = useState<Counter[]>(loadAll())
 
   return (
     <Container>

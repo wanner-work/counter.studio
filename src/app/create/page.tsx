@@ -29,24 +29,26 @@ export default function Create() {
           create a counter
         </h2>
         <p className="text-gray-500 max-w-[80%]">
-          after you create a counter, you can share the link to your counter with others.
+          after you create a counter, you will be redirected to the counter page. you can then share the link to your
+          counter with others.
         </p>
       </div>
 
       <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-5">
         <label className="col-span-2 flex flex-col gap-3">
           <span className="font-bold text-white">Title</span>
-          <input {...register("title", { required: true })} className="px-4 py-3 bg-white text-black" type="text" placeholder="Christopf Kakk Counter"/>
+          <input {...register("title", { required: true })} className="px-4 py-3 bg-white text-black" type="text"
+                 placeholder="The name of the counter"/>
         </label>
         <label className="col-span-2 flex flex-col gap-3">
           <span className="font-bold text-white">Description</span>
           <textarea {...register("description", { required: true })} className="px-4 py-3 bg-white text-black "
-                    placeholder="The counter of how many times christopf is going kakken"/>
+                    placeholder="A short description"/>
         </label>
 
-        <div className="col-span-2 flex flex-col gap-3 mt-6">
-          <span className="font-bold text-white">Ready?</span>
-          <button type="submit" className="px-4 py-3 bg-white text-black font-bold flex justify-between items-center gap-2 w-full">
+        <div className="col-span-2 flex flex-col gap-3 mt-6 items-end">
+          <button type="submit"
+                  className="px-4 py-3 bg-white text-black font-bold flex justify-between items-center gap-2">
             <span>
               create the counter
             </span>

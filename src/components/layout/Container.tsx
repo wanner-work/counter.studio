@@ -7,7 +7,7 @@ type ContainerProps = {
 }
 
 export default function Container ({ children, variant = 'default', classes = '' }: ContainerProps) {
-  let max = 'max-w-[1000px]'
+  let max = 'max-w-[800px]'
 
   switch (variant) {
     case 'wide':
@@ -18,7 +18,7 @@ export default function Container ({ children, variant = 'default', classes = ''
   }
 
   return (
-    <div className={`mx-auto px-8 w-full relative overflow-x-hidden md:overflow-x-visible ${max} ${classes}`}>
+    <div className={`mx-auto px-8 w-full relative md:overflow-x-visible ${max} ${classes}`}>
       {children}
     </div>
   )

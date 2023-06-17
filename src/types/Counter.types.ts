@@ -8,6 +8,10 @@ export interface Counter {
   modified: Dayjs
 }
 
+export interface CounterLocalStorage extends Counter {
+  type: 'counter'
+}
+
 export interface CreateCounterForm {
   title: string
   description: string

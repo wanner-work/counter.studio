@@ -4,6 +4,8 @@ type ShortNumberProps = {
 
 export default function ShortNumber ({ number }: ShortNumberProps) {
   const formatNumber = (num: number): string => {
+    if (num === 0) return '0'
+
     const suffixes = ['', 'k', 'm', 'b', 't']
     const value = Math.abs(num)
 

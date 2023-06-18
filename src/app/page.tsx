@@ -20,7 +20,7 @@ const sortCounters = (a: Counter, b: Counter) => {
 }
 
 export default function Home() {
-  const [counters, setCounters] = useState<Counter[]>()
+  const [counters, setCounters] = useState<Counter[]>([])
 
   useEffect(() => {
     setCounters(loadAll().sort(sortCounters))

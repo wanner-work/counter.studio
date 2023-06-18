@@ -14,14 +14,14 @@ type CounterView = {
 }
 
 export default function CounterView ({ init }: CounterView) {
-  save(init)
-
   const [inactive, setInactive] = useState<boolean>(false)
   const [copied, setCopied] = useState<boolean>(false)
   const [counter, setCounter] = useState<Counter>(init)
   const supabase = createClientComponentClient()
 
   useEffect(() => {
+    save(init)
+
     supabase.from('COUNTER').select('*').eq('id', init.id).single().then(({ data }) => {
       setCounter(data)
       save(data)

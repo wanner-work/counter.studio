@@ -19,4 +19,5 @@ export interface CreateCounterForm {
 
 export interface IncrementCounterForm {
   id: string
+  minus?: boolean
 }

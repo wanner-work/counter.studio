@@ -18,7 +18,7 @@ export default function Create() {
       { title, description },
     ]).select().single()
 
-    void navigator.clipboard.writeText(`${window.location.origin}/counter/${data.id}`)
+    void navigator?.clipboard?.writeText(`${window.location.origin}/counter/${data.id}`)
     router.push(`/counter/${data.id}`)
   }
 

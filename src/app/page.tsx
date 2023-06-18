@@ -1,7 +1,7 @@
 'use client'
 
 import { Counter } from "@/types/Counter.types";
-import { useState } from "react";
+import { useEffect, useState } from 'react'
 import { TestCounters } from "@/data/Counter.data";
 import SavedCounter from "@/components/saved/SavedCounter";
 import { PlusIcon } from "@heroicons/react/20/solid";
@@ -20,7 +20,11 @@ const sortCounters = (a: Counter, b: Counter) => {
 }
 
 export default function Home() {
-  const [counters, setCounters] = useState<Counter[]>(loadAll())
+  const [counters, setCounters] = useState<Counter[]>()
+
+  useEffect(() => {
+    setCounters(loadAll().sort(sortCounters))
+  }, [])
 
   return (
     <Container>

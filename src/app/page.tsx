@@ -6,19 +6,11 @@ import ShortNumber from '@/components/basic/ShortNumber'
 import { PlusIcon } from '@heroicons/react/20/solid'
 import SavedCounters from '@/components/saved/SavedCounters'
 import Link from "next/link";
+import Header from "@/components/layout/Header";
 
 export default function Home() {
-  return (<>
-      <Container variant="small" classes="pt-32 pb-10">
-        <div className="mb-4 flex justify-between">
-          <h1 className="text-4xl font-bold">
-            counter.studio
-          </h1>
-        </div>
-        <p className="text-gray-400">
-          create and share counters with your friends. free, anonymous, real time and open source.
-        </p>
-      </Container>
+  return (<div className="pt-6 md:pt-16">
+      <Header />
       <Container variant="small" classes="mb-8">
           <Link href="/create">
               <button className="py-3 px-4 rounded bg-white text-black font-bold w-full flex justify-between items-center transition hover:opacity-80 active:scale-95">
@@ -41,11 +33,11 @@ export default function Home() {
         </p>
       </Container>
 
-      <Container variant="wide" classes="max-w-[600px] lg:max-w-[1300px]">
+      <Container variant="wide" classes="max-w-[600px] lg:max-w-[1300px] pb-6">
         <div className="grid md:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-4">
           <SavedCounters />
         </div>
       </Container>
-  </>
+  </div>
   )
 }

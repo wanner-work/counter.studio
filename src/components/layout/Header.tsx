@@ -9,11 +9,11 @@ type HeaderProps = {
 
 export default function Header({hideDescription = false}: HeaderProps) {
     return (
-        <Container variant="small" classes="pt-6 pb-4">
+        <Container variant="small" classes="pt-6 md:pb-4">
             <div className="mb-4">
                 <div className="mb-4 flex justify-between items-end">
                     <Link href="/">
-                        <h1 className="text-2xl md:text-4xl font-bold truncate">
+                        <h1 className="text-3xl md:text-4xl font-bold truncate">
                             counter.st<span className="hidden md:inline">u</span>d<span className="hidden md:inline">i</span>o
                         </h1>
                     </Link>

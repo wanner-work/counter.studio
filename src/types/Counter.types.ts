@@ -5,7 +5,7 @@ export interface Counter {
   count: number
   title: string
   description: string
-  modified: number
+  modified: string
 }
 
 export interface CounterLocalStorage extends Counter {

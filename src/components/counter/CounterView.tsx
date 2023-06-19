@@ -8,7 +8,6 @@ import Container from '@/components/layout/Container'
 import RelativeTime from '@/components/basic/RelativeTime'
 import { CheckIcon, ClipboardDocumentIcon } from '@heroicons/react/24/outline'
 import { save } from '@/methods/localstorage'
-import { useLongPress } from 'react-use'
 
 type CounterView = {
   init: Counter
@@ -92,6 +91,11 @@ export default function CounterView({ init }: CounterView) {
     pressStart.current = Date.now()
   }
 
+  const onContext = (e: MouseEvent) => {
+    e.preventDefault()
+    void increment(true)
+  }
+
   const onUp = () => {
     console.log('up')
     if (Date.now() - pressStart.current > 500) {
@@ -131,8 +135,13 @@ export default function CounterView({ init }: CounterView) {
     </div>
 
     <div className="h-[400px] flex justify-center items-center">
-      <button onMouseDown={onDown} onMouseUp={onUp} onTouchStart={onDown} onTouchEnd={onUp} onContextMenu={(e) => { e.preventDefault(); void increment(true)}}
-           className={`${inactive ? 'cursor-wait text-gray-500' : 'active:scale-[0.9]'} transition text-[100px] cursor-pointer font-bold text-center relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]`}>
+      <button onMouseDown={onDown}
+              onMouseUp={onUp}
+              onTouchStart={onDown}
+              onTouchEnd={onUp}
+              onContextMenu={onContext}
+              className={`${inactive ? 'cursor-wait text-gray-500' : 'active:scale-[0.9]'} transition text-[100px] cursor-pointer font-bold text-center relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]`}
+      >
         {counter?.count}
       </button>
     </div>

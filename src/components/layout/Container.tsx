@@ -14,11 +14,11 @@ export default function Container ({ children, variant = 'default', classes = ''
       max = 'max-w-[1300px] px-12'
       break
     case 'small':
-      max = 'max-w-[800px]'
+      max = 'max-w-[600px]'
   }
 
   return (
-    <div className={`mx-auto px-8 w-full relative md:overflow-x-visible ${max} ${classes}`}>
+    <div className={`mx-auto px-6 md:px-8 w-full relative md:overflow-x-visible ${max} ${classes}`}>
       {children}
     </div>
   )

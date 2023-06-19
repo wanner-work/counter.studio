@@ -26,7 +26,7 @@ export async function generateMetadata(
   }
 
   return {
-    title: `${data.title}, ${data.description} - counter.studio`,
+    title: `${data.title} - counter.studio`,
     description: `This counter has been incremented ${data.count} times.`
   }
 }

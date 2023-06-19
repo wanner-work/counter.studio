@@ -5,19 +5,20 @@ import {PlusIcon} from "@heroicons/react/20/solid";
 
 type HeaderProps = {
     hideDescription?: boolean
+    showCreateButton?: boolean
 }
 
-export default function Header({hideDescription = false}: HeaderProps) {
+export default function Header({hideDescription = false, showCreateButton = false}: HeaderProps) {
     return (
-        <Container variant="small" classes="pt-6 md:pb-4">
+        <Container variant="small" classes="pt-6 pb-3 md:pb-4">
             <div className="mb-4">
-                <div className="mb-4 flex justify-between items-end">
+                <div className="mb-4 flex justify-between items-center">
                     <Link href="/">
                         <h1 className="text-3xl md:text-4xl font-bold truncate">
                             counter.st<span className="hidden md:inline">u</span>d<span className="hidden md:inline">i</span>o
                         </h1>
                     </Link>
-                    {hideDescription && <Link href="/create">
+                    {showCreateButton && <Link href="/create">
                         <button
                             className="p-[2px] md:p-1 rounded bg-white text-black font-bold w-full flex justify-between items-center transition hover:opacity-80 active:scale-95 disabled:opacity-50">
                             <PlusIcon className="w-6 h-6 text-black"/>

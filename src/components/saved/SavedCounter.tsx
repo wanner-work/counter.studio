@@ -5,7 +5,7 @@ import ShortNumber from "@/components/basic/ShortNumber"
 import dayjs from "dayjs"
 import RelativeTime from "@/components/basic/RelativeTime";
 import Link from "next/link";
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useCounter} from "@/hooks/counter";
 
 export default function SavedCounter(init: Counter) {
@@ -19,7 +19,7 @@ export default function SavedCounter(init: Counter) {
                 </div>
                 <div className="flex flex-col">
                     <h3 className="text-xl font-bold truncate mb-[2px]">{counter.title}</h3>
-                    <span className="text-gray-600 text-sm italic">updated <RelativeTime date={dayjs(counter.modified)}/></span>
+                    <span className="text-gray-600 text-sm italic truncate">updated <RelativeTime date={dayjs(counter.modified)}/></span>
                 </div>
                 <div>
                 </div>

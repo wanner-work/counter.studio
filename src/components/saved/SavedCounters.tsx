@@ -34,8 +34,6 @@ export default function SavedCounters({ amount }: SavedCountersParams) {
     } else {
       setCounters(counters)
     }
-
-    console.log('counters', counters)
   }, [])
 
   return <>

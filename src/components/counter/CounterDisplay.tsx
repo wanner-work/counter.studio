@@ -18,7 +18,7 @@ export default function CounterDisplay ({ init }: CounterDisplayParams) {
     const { counter, disabled, increment, decrement } = useCounter(init)
 
     return <div className="h-screen">
-        <Header hideDescription />
+        <Header hideDescription showCreateButton />
         <Container variant="small">
             <p className="text-gray-500 text-[14px] italic mb-3 truncate">
                 updated <RelativeTime date={dayjs(counter.modified)} />

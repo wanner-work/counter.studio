@@ -29,17 +29,15 @@ export default function Create() {
     }
 
     return <>
-        <Header />
+        <Header hideDescription />
         <Container variant="small">
-            <div className="py-8">
+            <div className="pb-8">
                 <div className="mb-8">
                     <h2 className="text-2xl font-bold mb-2">
                         create a counter
                     </h2>
-                    <p className="text-gray-500 max-w-[80%]">
-                        after you create a counter, you will be redirected to the counter page. you can then share the
-                        link to your
-                        counter with others.
+                    <p className="text-gray-500">
+                        create a new counter and share it with your friends.
                     </p>
                 </div>
 

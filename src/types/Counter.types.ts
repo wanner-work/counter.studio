@@ -5,10 +5,11 @@ export interface Counter {
   count: number
   title: string
   description: string
-  modified: Dayjs
+  modified: number
 }
 
 export interface CounterLocalStorage extends Counter {
+
   type: 'counter'
 }
 

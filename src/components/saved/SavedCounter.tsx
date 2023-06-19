@@ -1,25 +1,23 @@
+'use client'
+
 import {Counter} from "@/types/Counter.types"
 import ShortNumber from "@/components/basic/ShortNumber"
 import dayjs from "dayjs"
-import relativeTime from "dayjs/plugin/relativeTime"
 import RelativeTime from "@/components/basic/RelativeTime";
 import Link from "next/link";
+import React from 'react'
 
-dayjs.extend(relativeTime)
-
-export default function SavedCounter({id, count, title, modified}: Counter) {
-    console.log('count', count)
-
+export default function SavedCounter({title, id, count}: Counter) {
     return (
-        <Link href={`/counter/${id}`}>
-            <div className="grid grid-cols-saved-counter gap-4 p-5 bg-gray-500/10 border border-gray-300/10">
+        <Link href={`/counter/${id}`} className="">
+            <div className="w-full lg:min-w-[300px] lg:max-w-[400px] rounded-xl grid grid-cols-saved-counter gap-4 p-6 bg-gray-500/10 border border-gray-300/10">
                 <div className="grid place-items-center">
-                    <p className="font-bold text-[20px]"><ShortNumber number={parseInt(count as unknown as string)}/>
+                    <p className="font-bold text-[20px]"><ShortNumber number={count}/>
                     </p>
                 </div>
                 <div className="flex flex-col">
                     <h3 className="text-xl font-bold truncate mb-[2px]">{title}</h3>
-                    <span className="text-gray-600 text-sm italic">updated <RelativeTime date={modified}/></span>
+                    <span className="text-gray-600 text-sm italic">updated <RelativeTime date={dayjs().toISOString()}/></span>
                 </div>
                 <div>
                 </div>

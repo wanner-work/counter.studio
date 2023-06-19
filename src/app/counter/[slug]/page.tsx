@@ -1,8 +1,8 @@
 import { Counter } from "@/types/Counter.types"
 import { serviceSupabase } from "@/data/serviceSupabase";
-import CounterView from "@/components/counter/CounterView";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from 'next'
+import CounterDisplay from "@/components/counter/CounterDisplay";
 
 type CounterPageParams = {
   params: {
@@ -36,5 +36,5 @@ export default async function CounterPage({ params: { slug } }: CounterPageParam
   if (!data) {
     notFound()
   }
-  return <CounterView init={data} />
+  return <CounterDisplay init={data} />
 }

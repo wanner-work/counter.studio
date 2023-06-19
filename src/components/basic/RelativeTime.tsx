@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 dayjs.extend(relativeTime)
 
 type RelativeTimeProps = {
-  date: Dayjs
+  date: string
 }
 
 export default function RelativeTime ({ date }: RelativeTimeProps) {

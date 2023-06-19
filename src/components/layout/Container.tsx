@@ -14,7 +14,7 @@ export default function Container ({ children, variant = 'default', classes = ''
       max = 'max-w-[1300px] px-12'
       break
     case 'small':
-      max = 'max-w-[800px]'
+      max = 'max-w-[600px]'
   }
 
   return (

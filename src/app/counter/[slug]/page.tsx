@@ -10,7 +10,7 @@ type CounterPageParams = {
   }
 }
 
-export const revalidate = 1
+export const revalidate = 0
 
 export async function generateMetadata(
   { params: { slug } }: CounterPageParams,
@@ -20,14 +20,14 @@ export async function generateMetadata(
   if (!data) {
     // ignore this page if the counter doesn't exist
     return {
-      title: '404 - Page Not Found',
-      description: 'This page does not exist.'
+      title: 'counter not found - counter.studio',
+      description: 'the requested counter could not be found.'
     }
   }
 
   return {
     title: `${data.title} - counter.studio`,
-    description: `This counter has been incremented ${data.count} times.`
+    description: `${data.description} - incremented ${data.count} times.`
   }
 }
 

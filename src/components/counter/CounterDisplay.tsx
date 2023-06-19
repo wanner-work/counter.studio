@@ -3,19 +3,19 @@
 import Header from "@/components/layout/Header";
 import {Counter} from "@/types/Counter.types";
 import Container from "@/components/layout/Container";
-import React, {useEffect, useState} from "react";
-import {save} from "@/methods/localstorage";
+import React from "react";
 import {PlusIcon, MinusIcon} from "@heroicons/react/20/solid";
 import {useCounter} from "@/hooks/counter";
 import RelativeTime from "@/components/basic/RelativeTime";
 import dayjs from "dayjs";
+import {motion, AnimatePresence} from "framer-motion";
 
 type CounterDisplayParams = {
     init: Counter
 }
 
 export default function CounterDisplay ({ init }: CounterDisplayParams) {
-    const { counter, disabled, increment, decrement } = useCounter(init)
+    const { counter, countBefore, disabled, increment, decrement } = useCounter(init)
 
     return <div className="h-screen">
         <Header hideDescription showCreateButton />

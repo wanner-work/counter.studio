@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 
 export function useCounter(init: Counter) {
     const [disabled, setDisabled] = useState(false)
+    const [countBefore, setCountBefore] = useState(init.count)
     const [counter, setCounter] = useState(init)
 
     const supabase = createClientComponentClient()
@@ -32,6 +33,7 @@ export function useCounter(init: Counter) {
                 'postgres_changes',
                 { event: 'UPDATE', schema: 'public', table: 'COUNTER', filter: 'id=eq.' + init.id },
                 (payload) => {
+                    setCountBefore(payload.old.count)
                     setCounter(payload.new as Counter)
                     save(payload.new as Counter)
                 }
@@ -47,6 +49,7 @@ export function useCounter(init: Counter) {
         if (disabled) return
 
         setDisabled(true)
+        setCountBefore(counter.count)
         setCounter({
             ...counter,
             modified: dayjs().toString(),
@@ -60,6 +63,7 @@ export function useCounter(init: Counter) {
         if (disabled) return
 
         setDisabled(true)
+        setCountBefore(counter.count)
         setCounter({
             ...counter,
             modified: dayjs().toString(),
@@ -82,6 +86,7 @@ export function useCounter(init: Counter) {
     return {
         disabled,
         counter,
+        countBefore,
         increment,
         decrement
     }

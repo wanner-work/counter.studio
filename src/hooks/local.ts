@@ -76,6 +76,11 @@ export function useLocalActions () {
     await reload()
   }
 
+  async function has(id: string): Promise<boolean> {
+    const item = await store.getItem<CounterLocalStorage>(id)
+    return !!item
+  }
+
   async function remove(id: string) {
     await store.removeItem(id)
     await reload()
@@ -83,6 +88,7 @@ export function useLocalActions () {
 
   return {
     save,
+    has,
     remove
   }
 }

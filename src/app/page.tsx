@@ -4,6 +4,7 @@ import { PlusIcon } from '@heroicons/react/20/solid'
 import SavedCounters from '@/components/saved/SavedCounters'
 import Link from "next/link";
 import Header from "@/components/layout/Header";
+import { TrashIcon } from '@heroicons/react/24/outline'
 
 export default function Home() {
   return (<div className="pt-6 md:pt-16">
@@ -22,9 +23,16 @@ export default function Home() {
       </Container>
 
       <Container variant="small" classes="mb-8">
-        <h2 className="text-2xl font-bold mb-3">
-          your recent counters
-        </h2>
+        <div className="flex justify-between items-center mb-3">
+          <h2 className="text-2xl font-bold">
+            your recent counters
+          </h2>
+          <Link href="/share">
+            <button className="transition rounded px-2 py-1 flex bg-gray-500/30 hover:bg-white/10">
+              share
+            </button>
+          </Link>
+        </div>
         <p className="text-gray-500">
           counters you created or visited recently are stored locally in your browser and will be available here.
         </p>

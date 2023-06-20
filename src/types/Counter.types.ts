@@ -1,5 +1,3 @@
-import { Dayjs } from "dayjs";
-
 export interface Counter {
   id: string
   count: number
@@ -9,7 +7,6 @@ export interface Counter {
 }
 
 export interface CounterLocalStorage extends Counter {
-
   type: 'counter'
 }
 

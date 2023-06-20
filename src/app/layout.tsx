@@ -7,7 +7,14 @@ const roboto = Roboto_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'counter.studio - create and share your counters',
-  description: 'create and share counters with your friends. free, anonymous, real time and open source.'
+  description: 'create and share counters with your friends. free, anonymous, real time and open source.',
+  openGraph: {
+    images: [
+      {
+        url: 'https://counter.studio/social.png',
+      }
+    ]
+  }
 }
 
 export default function RootLayout({

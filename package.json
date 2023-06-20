@@ -19,6 +19,8 @@
     "dayjs": "^1.11.8",
     "encoding": "^0.1.13",
     "framer-motion": "^10.12.16",
+    "jotai": "^2.2.1",
+    "localforage": "^1.10.0",
     "next": "13.4.5",
     "postcss": "8.4.24",
     "react": "18.2.0",

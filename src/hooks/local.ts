@@ -1,26 +1,32 @@
 import { Counter, CounterLocalStorage } from '@/types/Counter.types'
 import { useEffect, useState } from 'react'
+import * as localforage from 'localforage'
+import { useCountersAtom } from '@/stores/counters'
+
+const store = localforage.createInstance({
+  name: 'counters'
+})
 
 export function useLocal() {
   const [loading, setLoading] = useState<boolean>(true)
-  const [counters, setCounters] = useState<Counter[]>([])
+  const [counters, setCounters] = useCountersAtom()
 
   useEffect(() => {
-    setCounters(all())
-    setLoading(false)
+    all().then(counters => {
+      setCounters(counters)
+      setLoading(false)
+    })
   }, [])
 
-  function all(): Counter[] {
-    const keys = Object.keys(localStorage)
+  async function all(): Promise<Counter[]> {
     const counters: Counter[] = []
 
-    for (const key of keys) {
+    for (const key of await store.keys()) {
       try {
-        const raw = localStorage.getItem(key)
-        if (!raw) {
+        const counter = await store.getItem<CounterLocalStorage>(key)
+        if (!counter) {
           continue
         }
-        const counter = JSON.parse(raw) as CounterLocalStorage
         if (counter.type === 'counter') {
           counters.push({
             id: counter.id,
@@ -38,9 +44,11 @@ export function useLocal() {
     return counters.sort((a, b) => b.modified.localeCompare(a.modified))
   }
 
-  function reload () {
+  async function reload () {
     setLoading(true)
-    setCounters(all())
+    setCounters([])
+    const counters = await all()
+    setCounters(counters)
     setLoading(false)
   }
 
@@ -54,17 +62,23 @@ export function useLocal() {
 export function useLocalActions () {
   const { reload } = useLocal()
 
-  function save(counter: Counter) {
-    localStorage.setItem(counter.id, JSON.stringify({
+  async function save(counter: Counter) {
+    const item = await store.getItem<CounterLocalStorage>(counter.id)
+
+    if (item && item.count === counter.count) {
+      return
+    }
+
+    await store.setItem(counter.id, {
       ...counter,
       type: 'counter'
-    }))
-    reload()
+    })
+    await reload()
   }
 
-  function remove(id: string) {
-    localStorage.removeItem(id)
-    reload()
+  async function remove(id: string) {
+    await store.removeItem(id)
+    await reload()
   }
 
   return {

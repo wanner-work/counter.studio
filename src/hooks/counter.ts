@@ -14,15 +14,15 @@ export function useCounter(init: Counter) {
     const supabase = createClientComponentClient()
 
     useEffect(() => {
-        save(counter)
+        void save(counter)
     }, [])
 
 
     useEffect(() => {
-        save(init)
+        void save(init)
         supabase.from('COUNTER').select('*').eq('id', init.id).single().then(({ data }) => {
             setCounter(data)
-            save(data)
+            void save(data)
         })
     }, [])
 
@@ -36,7 +36,7 @@ export function useCounter(init: Counter) {
                 (payload) => {
                     setCountBefore(payload.old.count)
                     setCounter(payload.new as Counter)
-                    save(payload.new as Counter)
+                    void save(payload.new as Counter)
                 }
             )
             .subscribe()

@@ -1,7 +1,7 @@
 'use client'
 
 import { useLocal } from '@/hooks/local'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Container from '@/components/layout/Container'
 import CounterWidget from '@/components/counter/CounterWidget'
 

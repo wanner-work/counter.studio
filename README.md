@@ -2,7 +2,7 @@
 
 <img src="public/social.png" alt="counter.studio - social image">
 
-# counter.studio
+# [counter.studio](https://counter.studio)
 _create and share counters with your friends. free, anonymous, real time and open source._
 
 ## key features

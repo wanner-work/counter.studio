@@ -20,6 +20,18 @@ export default function ShareCode () {
     setURL(`https://counter.studio/share?${urlSearchParams.toString()}`)
   }, [counters])
 
+  if (loading) {
+    return <div className="w-full rounded-xl gap-4 p-4 bg-gray-500/10 border border-gray-300/10 text-gray-500">
+      loading...
+    </div>
+  }
+
+  if (counters.length === 0) {
+    return <div className="w-full rounded-xl gap-4 p-4 bg-gray-500/10 border border-gray-300/10 text-gray-500">
+      no counters to share
+    </div>
+  }
+
   return <>
     <div className="rounded-xl p-8 bg-gray-500/10 border border-gray-300/10">
       <div className="bg-white p-2 rounded">

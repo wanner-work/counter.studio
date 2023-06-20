@@ -12,7 +12,7 @@ import CounterWidget from '@/components/counter/CounterWidget'
 
 let once = false
 
-export default function SharePage () {
+export default function SharePage() {
   const searchParams = useSearchParams()
 
   const [counters, setCounters] = useState<Counter[]>([])
@@ -47,23 +47,26 @@ export default function SharePage () {
 
   if (searchParams.has('c')) {
     return <>
-      <Header hideDescription />
+      <Header hideDescription/>
       <Container variant="small">
-        <div className="">
-          <div className="mb-8">
+        <div className="pb-8">
+          <div className="">
             <h2 className="text-2xl font-bold mb-2">
               counters shared with you
             </h2>
             <p className="text-gray-500">
               all the counters that have been shared with you.
             </p>
-
-            {loading && <div className="w-full mt-4 rounded-xl gap-4 p-4 bg-gray-500/10 border border-gray-300/10 text-gray-500">
-                loading...
-            </div>}
           </div>
         </div>
       </Container>
+
+      {loading && <Container variant="small">
+          <div className="w-full rounded-xl gap-4 p-4 bg-gray-500/10 border border-gray-300/10 text-gray-500">
+              loading...
+          </div>
+      </Container>}
+
       <Container variant="wide">
         <div className="grid md:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-4">
           {counters.map((counter) => <CounterWidget key={counter.id} {...counter} />)}
@@ -73,7 +76,7 @@ export default function SharePage () {
   }
 
   return <>
-    <Header hideDescription />
+    <Header hideDescription/>
     <Container variant="small">
       <div className="pb-8">
         <div className="mb-8">
@@ -81,11 +84,12 @@ export default function SharePage () {
             share your counters
           </h2>
           <p className="text-gray-500">
-            share all your counters with a url or a qr code. if the url is opened on a different device, the counters will be added to it.
+            share all your counters with a url or a qr code. if the url is opened on a different device, the counters
+            will be added to it.
           </p>
         </div>
 
-        <ShareCode />
+        <ShareCode/>
       </div>
     </Container>
   </>

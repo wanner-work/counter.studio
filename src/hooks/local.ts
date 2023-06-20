@@ -10,13 +10,6 @@ export function useLocal() {
     setLoading(false)
   }, [])
 
-  function save(counter: Counter) {
-    localStorage.setItem(counter.id, JSON.stringify({
-      ...counter,
-      type: 'counter'
-    }))
-  }
-
   function all(): Counter[] {
     const keys = Object.keys(localStorage)
     const counters: Counter[] = []
@@ -42,12 +35,40 @@ export function useLocal() {
       }
     }
 
-    return counters.sort((a, b) => a.modified.localeCompare(b.modified))
+    return counters.sort((a, b) => b.modified.localeCompare(a.modified))
+  }
+
+  function reload () {
+    setLoading(true)
+    setCounters(all())
+    setLoading(false)
+  }
+
+  return {
+    reload,
+    loading,
+    counters
+  }
+}
+
+export function useLocalActions () {
+  const { reload } = useLocal()
+
+  function save(counter: Counter) {
+    localStorage.setItem(counter.id, JSON.stringify({
+      ...counter,
+      type: 'counter'
+    }))
+    reload()
+  }
+
+  function remove(id: string) {
+    localStorage.removeItem(id)
+    reload()
   }
 
   return {
     save,
-    loading,
-    counters
+    remove
   }
 }

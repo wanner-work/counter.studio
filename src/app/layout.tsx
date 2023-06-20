@@ -6,15 +6,9 @@ import { Metadata } from 'next'
 const roboto = Roboto_Mono({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://counter.studio'),
   title: 'counter.studio - create and share your counters',
-  description: 'create and share counters with your friends. free, anonymous, real time and open source.',
-  openGraph: {
-    images: [
-      {
-        url: 'https://counter.studio/social.png',
-      }
-    ]
-  }
+  description: 'create and share counters with your friends. free, anonymous, real time and open source.'
 }
 
 export default function RootLayout({

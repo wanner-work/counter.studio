@@ -1,16 +1,17 @@
 import {Counter} from "@/types/Counter.types";
 import {useEffect, useState} from "react";
-import { save } from "@/methods/localstorage";
 import {createClientComponentClient} from "@supabase/auth-helpers-nextjs";
 import dayjs from "dayjs";
+import { useLocalActions } from '@/hooks/local'
 
 export function useCounter(init: Counter) {
     const [disabled, setDisabled] = useState(false)
     const [countBefore, setCountBefore] = useState(init.count)
     const [counter, setCounter] = useState(init)
 
-    const supabase = createClientComponentClient()
+    const { save } = useLocalActions()
 
+    const supabase = createClientComponentClient()
 
     useEffect(() => {
         save(counter)

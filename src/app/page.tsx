@@ -1,8 +1,5 @@
 import React from 'react'
 import Container from "@/components/layout/Container";
-import RelativeTime from '@/components/basic/RelativeTime'
-import dayjs from 'dayjs'
-import ShortNumber from '@/components/basic/ShortNumber'
 import { PlusIcon } from '@heroicons/react/20/solid'
 import SavedCounters from '@/components/saved/SavedCounters'
 import Link from "next/link";
@@ -34,9 +31,7 @@ export default function Home() {
       </Container>
 
       <Container variant="wide" classes="max-w-[600px] lg:max-w-[1300px] pb-6">
-        <div className="grid md:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-4">
-          <SavedCounters />
-        </div>
+        <SavedCounters />
       </Container>
   </div>
   )

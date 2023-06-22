@@ -12,7 +12,7 @@ import CounterWidget from '@/components/counter/CounterWidget'
 
 let once = false
 
-export default function SharePage() {
+export default function SyncPage() {
   const searchParams = useSearchParams()
 
   const [counters, setCounters] = useState<Counter[]>([])
@@ -21,12 +21,11 @@ export default function SharePage() {
   const supabase = createClientComponentClient()
 
   useEffect(() => {
-    if (once) {
-      return
+    if (!once) {
+      void fetchCounters(searchParams.getAll('c'))
     }
     once = true
-    void fetchCounters(searchParams.getAll('c'))
-  }, [searchParams])
+  }, [searchParams, counters])
 
   const fetchCounters = async (ids: string[]) => {
     const counters: Counter[] = []
@@ -37,11 +36,11 @@ export default function SharePage() {
       if (data) {
         if (!counters.find((c) => c.id === data.id)) {
           counters.push(data)
+          setCounters(counters)
         }
       }
     }
 
-    setCounters(counters)
     setLoading(false)
   }
 

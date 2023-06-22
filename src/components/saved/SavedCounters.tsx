@@ -10,7 +10,7 @@ export default function SavedCounters () {
 
   if (loading) {
     return <Container variant="small">
-      <div className="w-full rounded-xl gap-4 p-4 bg-gray-500/10 border border-gray-300/10 text-gray-500">
+      <div className="w-full rounded-xl gap-4 p-4 bg-black/60 border border-gray-300/10 text-gray-500">
         loading...
       </div>
     </Container>
@@ -18,13 +18,13 @@ export default function SavedCounters () {
 
   if (counters.length === 0) {
     return <Container variant="small">
-      <div className="w-full rounded-xl gap-4 p-4 bg-gray-500/10 border border-gray-300/10 text-gray-500">
+      <div className="w-full rounded-xl gap-4 p-4 bg-black/60 border border-gray-300/10 text-gray-500">
         no counters saved yet
       </div>
     </Container>
   }
 
   return <div className="grid md:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center gap-4">
-    {counters.map((counter) => <CounterWidget key={counter.id} {...counter} />)}
+    {counters.map((counter) => <CounterWidget key={counter.id} {...counter} showRemove />)}
   </div>
 }

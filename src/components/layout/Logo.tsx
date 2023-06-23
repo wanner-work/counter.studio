@@ -25,7 +25,7 @@ export default function Logo({ size = 'medium', classes = '' }: LogoProps) {
 
   switch (size) {
     case 'mobile':
-      fontSize = 'text-xl'
+      fontSize = 'text-[22px]'
       boxSize = '60px'
       backgroundSize = '40px'
       y1Start = -20

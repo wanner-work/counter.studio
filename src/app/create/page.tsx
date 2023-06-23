@@ -30,8 +30,9 @@ export default function Create() {
     }
 
     return <>
-        <Container variant="small" classes="p-8">
-            <Logo size="small" />
+        <Container variant="small" classes="p-4 sm:p-8">
+          <Logo size="mobile" classes="sm:hidden" />
+          <Logo size="small" classes="hidden sm:flex" />
         </Container>
         <Container variant="small">
             <div className="pb-8">

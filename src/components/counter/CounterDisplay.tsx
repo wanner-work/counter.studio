@@ -20,7 +20,7 @@ export default function CounterDisplay ({ init }: CounterDisplayParams) {
     const { counter, countBefore, disabled, increment, decrement } = useCounter(init)
 
     return <div className="h-screen">
-        <Container variant="small" classes="p-8">
+        <Container variant="small" classes="p-4 sm:p-8">
             <Logo size="mobile" classes="sm:hidden" />
             <Logo size="small" classes="hidden sm:flex" />
         </Container>

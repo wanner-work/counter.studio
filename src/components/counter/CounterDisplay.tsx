@@ -9,6 +9,8 @@ import {useCounter} from "@/hooks/counter";
 import RelativeTime from "@/components/basic/RelativeTime";
 import dayjs from "dayjs";
 import {motion, AnimatePresence} from "framer-motion";
+import Logo from '@/components/layout/Logo'
+import { Cog6ToothIcon } from '@heroicons/react/24/outline'
 
 type CounterDisplayParams = {
     init: Counter
@@ -18,7 +20,9 @@ export default function CounterDisplay ({ init }: CounterDisplayParams) {
     const { counter, countBefore, disabled, increment, decrement } = useCounter(init)
 
     return <div className="h-screen">
-        <Header hideDescription showCreateButton />
+        <Container variant="small" classes="p-8">
+            <Logo size="small" />
+        </Container>
         <Container variant="small">
             <p className="text-gray-500 text-[14px] italic mb-3 truncate">
                 updated <RelativeTime date={dayjs(counter.modified)} />
@@ -38,12 +42,22 @@ export default function CounterDisplay ({ init }: CounterDisplayParams) {
         <div className="fixed bottom-0 w-full py-6">
             <Container variant="small">
                 <div className="flex gap-4">
-                    <button disabled={disabled} onClick={() => increment()} className="py-3 px-4 rounded bg-white text-black font-bold w-full flex justify-center items-center transition hover:opacity-80 active:scale-95 disabled:opacity-50">
-                        <PlusIcon className="w-6 h-6 text-black"/>
-                    </button>
-                    <button disabled={disabled} onClick={() => decrement()} className="py-3 px-4 rounded bg-white text-black font-bold w-full flex justify-center items-center transition hover:opacity-80 active:scale-95 disabled:opacity-50">
-                        <MinusIcon className="w-6 h-6 text-black"/>
-                    </button>
+                    <div className="relative w-full flex justify-center items-center group">
+                        <div className="w-full">
+                            <button disabled={disabled} onClick={() => increment()} className="py-3 px-4 text-white relative flex justify-center items-center rounded-xl bg-black/60 border border-gray-300/10 z-10 font-bold w-full transition hover:opacity-60 active:scale-95 disabled:opacity-50">
+                                <PlusIcon className="w-6 h-6 text-white"/>
+                            </button>
+                        </div>
+                        <div className="w-full h-full bg-gradient-company absolute top-0 blur-2xl opacity-20" />
+                    </div>
+                    <div className="relative w-full flex justify-center items-center group">
+                        <div className="w-full">
+                            <button disabled={disabled} onClick={() => decrement()} className="py-3 px-4 text-white relative flex justify-center items-center rounded-xl bg-black/60 border border-gray-300/10 z-10 font-bold w-full transition hover:opacity-60 active:scale-95 disabled:opacity-50">
+                                <MinusIcon className="w-6 h-6 text-white" />
+                            </button>
+                        </div>
+                        <div className="w-full h-full bg-gradient-company absolute top-0 blur-2xl opacity-20" />
+                    </div>
                 </div>
             </Container>
         </div>

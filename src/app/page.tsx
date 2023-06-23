@@ -11,9 +11,10 @@ import Logo from '@/components/layout/Logo'
 
 export default function Home() {
   return (<div className="pt-6 md:pt-16">
-      <Container variant="small" classes="mb-8">
-        <Logo size="small" />
-        <p className="text-gray-400 pt-6">
+      <Container variant="small" classes="mt-8 mb-10">
+        <Logo size="medium" classes="hidden md:flex flex-col gap-8 mb-4" />
+        <Logo size="small" classes="md:hidden flex-col gap-8 mb-4" />
+        <p className="text-gray-400 pt-6 text-center">
           create and share counters with your friends. free, anonymous, real time and open source.
         </p>
       </Container>

@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 type LogoProps = {
   classes?: string
-  size?: 'small' | 'medium' | 'large'
+  size?: 'mobile' | 'small' | 'medium' | 'large'
 }
 
 export default function Logo({ size = 'medium', classes = '' }: LogoProps) {
@@ -24,6 +24,23 @@ export default function Logo({ size = 'medium', classes = '' }: LogoProps) {
   let x3End = 10
 
   switch (size) {
+    case 'mobile':
+      fontSize = 'text-xl'
+      boxSize = '60px'
+      backgroundSize = '40px'
+      y1Start = -20
+      y2Start = -10
+      y3Start = 0
+      y1End = -10
+      y2End = 0
+      y3End = 10
+      x1Start = -10
+      x2Start = -5
+      x3Start = 0
+      x1End = -5
+      x2End = 0
+      x3End = 5
+      break
     case 'small':
       fontSize = 'text-3xl'
       boxSize = '80px'

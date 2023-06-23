@@ -21,7 +21,8 @@ export default function CounterDisplay ({ init }: CounterDisplayParams) {
 
     return <div className="h-screen">
         <Container variant="small" classes="p-8">
-            <Logo size="small" />
+            <Logo size="mobile" classes="sm:hidden" />
+            <Logo size="small" classes="hidden sm:flex" />
         </Container>
         <Container variant="small">
             <p className="text-gray-500 text-[14px] italic mb-3 truncate">

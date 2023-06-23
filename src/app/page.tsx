@@ -18,20 +18,22 @@ export default function Home() {
           create and share counters with your friends. free, anonymous, real time and open source.
         </p>
       </Container>
-      <Container variant="small" classes="mb-8 flex justify-center items-center group">
-        <div className="w-full">
-          <Link href="/create">
-            <button className="py-3 px-4 text-white relative flex justify-between items-center rounded-xl bg-black/60 border border-gray-300/10 z-10 font-bold w-full transition hover:opacity-60 active:scale-95">
+      <Container variant="small" classes="relative mb-8 flex justify-center items-center group">
+        <div className="w-full relative">
+          <div className="relative w-full">
+            <Link href="/create">
+              <button className="py-3 px-4 text-white relative flex justify-between items-center rounded-xl bg-black/60 border border-gray-300/10 z-10 font-bold w-full transition hover:opacity-60 active:scale-95">
                   <span className="text-left">
                     create a new counter
                   </span>
-              <span>
+                <span>
                     <PlusIcon className="w-6 h-6 text-white"/>
                   </span>
-            </button>
-          </Link>
+              </button>
+            </Link>
+          </div>
         </div>
-        <div className="w-full h-full bg-gradient-company absolute top-0 blur-2xl opacity-20" />
+        <div className="w-full h-full bg-gradient-company absolute top-0 blur-2xl opacity-20 will-change-auto" />
       </Container>
 
       <Container variant="small" classes="mb-8">

@@ -115,8 +115,8 @@ export default function Logo({ size = 'medium', classes = '' }: LogoProps) {
         </motion.div>
       </AnimatePresence>
       <AnimatePresence>
-        <motion.div initial={{ transform: 'scale(0.2)', opacity: 0, position: 'absolute' }}
-                    animate={{ transform: 'scale(1)', opacity: 0.6, position: 'absolute' }}
+        <motion.div initial={{ transform: 'scale(0.2)', filter: 'blur(40px)', opacity: 0, position: 'absolute' }}
+                    animate={{ transform: 'scale(1)', filter: 'blur(40px)', opacity: 0.6, position: 'absolute' }}
                     transition={{
                       ease: 'easeOut',
                       duration: 1,
@@ -126,7 +126,7 @@ export default function Logo({ size = 'medium', classes = '' }: LogoProps) {
                       width: backgroundSize,
                       height: backgroundSize
                     }}
-                    className={`absolute bg-gradient-company blur-2xl opacity-70 flex justify-center items-center z-0`}
+                    className={`absolute bg-gradient-company opacity-70 flex justify-center items-center z-0 translate-x-0 translate-y-0 will-change-transform`}
         ></motion.div>
       </AnimatePresence>
     </div>

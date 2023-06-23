@@ -9,6 +9,7 @@ import { Counter } from '@/types/Counter.types'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 import { PostgrestSingleResponse } from '@supabase/supabase-js'
 import CounterWidget from '@/components/counter/CounterWidget'
+import Logo from '@/components/layout/Logo'
 
 let once = false
 
@@ -75,16 +76,18 @@ export default function SyncPage() {
   }
 
   return <>
-    <Header hideDescription/>
+    <Container variant="small" classes="p-4 sm:p-8">
+      <Logo size="mobile" classes="sm:hidden" />
+      <Logo size="small" classes="hidden sm:flex" />
+    </Container>
     <Container variant="small">
       <div className="pb-8">
         <div className="mb-8">
           <h2 className="text-2xl font-bold mb-2">
-            share your counters
+            synchronize your counters
           </h2>
           <p className="text-gray-500">
-            share all your counters with a url or a qr code. if the url is opened on a different device, the counters
-            will be added to it.
+            synchronize your counters across multiple devices by opening this link on each device.
           </p>
         </div>
 

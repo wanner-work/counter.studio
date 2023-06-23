@@ -17,7 +17,7 @@ export default function ShareCode () {
       urlSearchParams.append('c', counter.id)
     }
 
-    setURL(`https://counter.studio/share?${urlSearchParams.toString()}`)
+    setURL(`${location.origin}/sync?${urlSearchParams.toString()}`)
   }, [counters])
 
   if (loading) {

@@ -1,8 +1,7 @@
-import { Counter } from "@/types/Counter.types"
-import { serviceSupabase } from "@/data/serviceSupabase";
-import { notFound } from "next/navigation";
-import { Metadata, ResolvingMetadata } from 'next'
-import CounterDisplay from "@/components/counter/CounterDisplay";
+import CounterAction from '@/components/counter/CounterAction'
+import getServiceClient from '@/methods/supabase/client/getServiceClient'
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 type CounterPageParams = {
   params: {
@@ -12,11 +11,17 @@ type CounterPageParams = {
 
 export const revalidate = 0
 
-export async function generateMetadata(
-  { params: { slug } }: CounterPageParams,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const { data } = await serviceSupabase.from('COUNTER').select().eq('id', slug).single() as { data: Counter | null }
+export async function generateMetadata({
+  params: { slug }
+}: CounterPageParams): Promise<Metadata> {
+  const supabase = getServiceClient()
+
+  const { data } = await supabase
+    .from('COUNTER')
+    .select('*')
+    .eq('id', slug)
+    .single()
+
   if (!data) {
     // ignore this page if the counter doesn't exist
     return {
@@ -31,10 +36,19 @@ export async function generateMetadata(
   }
 }
 
-export default async function CounterPage({ params: { slug } }: CounterPageParams) {
-  const { data } = await serviceSupabase.from('COUNTER').select().eq('id', slug).single() as { data: Counter | null }
+export default async function CounterPage({
+  params: { slug }
+}: CounterPageParams) {
+  const supabase = getServiceClient()
+
+  const { data } = await supabase
+    .from('COUNTER')
+    .select()
+    .eq('id', slug)
+    .single()
+
   if (!data) {
     notFound()
   }
-  return <CounterDisplay init={data} />
+  return <CounterAction counter={data} />
 }

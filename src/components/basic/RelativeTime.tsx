@@ -1,15 +1,16 @@
 'use client'
 
-import dayjs, { Dayjs } from "dayjs"
-import relativeTime from "dayjs/plugin/relativeTime"
-import { useEffect, useState } from "react";
+import dayjs, { Dayjs } from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import { useEffect, useState } from 'react'
+
 dayjs.extend(relativeTime)
 
-type RelativeTimeProps = {
+interface Props {
   date: number | string | Date | Dayjs
 }
 
-export default function RelativeTime ({ date }: RelativeTimeProps) {
+export default function RelativeTime({ date }: Props) {
   const [relative, setRelative] = useState<string>(dayjs(date).fromNow())
 
   useEffect(() => {

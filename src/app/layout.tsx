@@ -1,25 +1,26 @@
-import './globals.css'
-import { Inter, Roboto_Mono } from 'next/font/google'
-import React from "react";
 import { Metadata } from 'next'
+import { Poppins } from 'next/font/google'
+import { ReactNode } from 'react'
 
-const roboto = Roboto_Mono({ subsets: ['latin'] })
+import Box from '@wanner.work/box'
+import '../styles/globals.css'
+
+const poppins = Poppins({ subsets: ['latin'], weight: '500' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://counter.studio'),
   title: 'counter.studio - create and share your counters',
-  description: 'create and share counters with your friends. free, anonymous, real time and open source.'
+  description:
+    'create and share counters with your friends. free, anonymous, real time and open source.'
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className={roboto.className}>
-        {children}
+    <html lang="en" className="">
+      <body className={poppins.className}>
+        <Box width="small" align="center">
+          {children}
+        </Box>
       </body>
     </html>
   )
